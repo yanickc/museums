@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+from sklearn.linear_model import LinearRegression
 from wikipedia import wikipedia
 
 
@@ -63,13 +64,13 @@ def get_cities_table():
     for c in MISSING_CITIES:
         cities_df = cities_df.append(c, ignore_index=True)
 
-    # Remove Suzhou double entry, keep the biggest
+    # Remove Suzhou double entry, keeping the biggest
     cities_df.drop_duplicates(subset="City", keep="first", inplace=True)
 
     return cities_df
 
 
-@st.cache
+@st.cache  # @st.cache allows streamlit to memoize function return values and prevent reevaluating at each page change.
 def load_museums_df():
     museums_df = get_museum_wikipedia_table()
     cities_df = get_cities_table()
@@ -104,13 +105,10 @@ def load_museums_df():
     return result_df
 
 
-@st.cache
+@st.cache  # @st.cache allows streamlit to memoize function return values and prevent reevaluating at each page change.
 def load_model(df):
-    from sklearn.linear_model import LinearRegression
-
     model = LinearRegression()
     X = df[["Population"]]
-    # X = db[["Population", "Visitors per year"]]
     y = df["Visitors per year"]
 
     model.fit(X, y)
@@ -152,14 +150,7 @@ def plot(df, model, x, y_hat):
     fig.add_trace(go.Scatter(x=x_range, y=y_range, name="Linear Regression"))
     fig.update_layout(
         annotations=[
-            dict(
-                x=x,
-                y=y_hat,
-                text=f"Prediction={y_hat}",
-                arrowhead=2,
-                ax=0,
-                ay=-75
-            )
+            dict(x=x, y=y_hat, text=f"Prediction={y_hat}", arrowhead=2, ax=0, ay=-75)
         ]
     )
     st.plotly_chart(fig)
