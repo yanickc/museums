@@ -5,8 +5,10 @@ Small demo of [Streamlit](https://www.streamlit.io/).
 Using [wikipedia](https://en.wikipedia.org/wiki/List_of_most-visited_museums) data on museums annual attendance,
 it performs a simple linear regression to predict museums annual visitors from the city's population.
 
+
 ## Method
-The (naive 😉) model performs a simple linear interpolation to try and predict a museums annual attendance from
+
+The (naive 😉) model performs a simple linear interpolation to try and predict a museum's annual attendance from
 the city's population. 
 
 Note that it is unrealistic to use a simple linear regression in this context. 
@@ -21,26 +23,42 @@ Many factors, contextual and seasonal may affect the museums attendance.
  
 (See the table below)
 
+
 ## Code organization
 
-You can find working jupyter notebooks in the ./museums/ folder
+The [streamlit](https://www.streamlit.io/) dashboard code can be found in ./museums/dashboard.py 
 
-The streamlit dashboard codee is found in ./museums/dashboard.py 
+You can find exploratory jupyter notebooks in the ./museums/ folder
+
 
 # How to run the dashboard
 
-To start the dashboard (screenshot):
+Here is a screenshot of the dashboard: 
+
+To run your own copy, see instructions below.
+
 
 > ![dashboard](README_assets/dashboard.jpg)
 
-## As a docker container
 
-To build the docker image:
+## Running the prebuilt docker container
+
+``` 
+docker run -p 8080:8080 yanickc/museums-demo
+```
+
+and then open a browser at ttp://localhost:8080
+
+
+## Building the docker image
+
+
+Clone this repository and then:
 ```
 make build
 ```
 
-To launch the local docker container:
+Launch the local docker container:
 ```
 make run
 ```     
@@ -48,11 +66,11 @@ make run
 Then, open http://localhost:8080 in a browser.
 
 
-## Local 
+## Local python
 
 Prerequisites:
 - Python 3
-- poetry (http://localhost:8080/)
+- [poetry](https://python-poetry.org/)
 
 Install dependencies:
 ``` 

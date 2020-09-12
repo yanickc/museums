@@ -12,6 +12,6 @@ RUN poetry install --no-dev
 EXPOSE 8080
 ENV STREAMLIT_SERVER_PORT=8080
 
-ADD museums/dashboard.py .
+COPY museums/dashboard.py .
 CMD [ "poetry", "run", "streamlit", "run", "dashboard.py" ]
 
