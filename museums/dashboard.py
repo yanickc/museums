@@ -149,6 +149,9 @@ def plot(df, model, x, y_hat):
     )
     fig.add_trace(go.Scatter(x=x_range, y=y_range, name="Linear Regression"))
     fig.update_layout(
+        title="Museum annual visitor vs City population (hover for details)",
+        xaxis_title = "City population",
+        yaxis_title = "Museum annual visitors",
         annotations=[
             dict(x=x, y=y_hat, text=f"Prediction={y_hat}", arrowhead=2, ax=0, ay=-75)
         ]
