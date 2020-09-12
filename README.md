@@ -6,7 +6,10 @@ Using [wikipedia](https://en.wikipedia.org/wiki/List_of_most-visited_museums) da
 it performs a simple linear regression to predict museums annual visitors from the city's population.
 
 ## Method
-It is unrealistic to use a simple linear regression in this context. 
+The (naive 😉) model performs a simple linear interpolation to try and predict a museums annual attendance from
+the city's population. 
+
+Note that it is unrealistic to use a simple linear regression in this context. 
 We can see that there is no clear correlation between a city's population and a museum attendance:
 
 ![plot](README_assets/plot.png)
@@ -18,10 +21,17 @@ Many factors, contextual and seasonal may affect the museums attendance.
  
 (See the table below)
 
+## Code organization
+
+You can find working jupyter notebooks in the ./museums/ folder
+
+The streamlit dashboard codee is found in ./museums/dashboard.py 
 
 # How to run the dashboard
 
-![dashboard](README_assets/dashboard.jpg)
+To start the dashboard (screenshot):
+
+> ![dashboard](README_assets/dashboard.jpg)
 
 ## As a docker container
 
@@ -30,12 +40,12 @@ To build the docker image:
 make build
 ```
 
-To launch the docker container:
+To launch the local docker container:
 ```
 make run
 ```     
 
-The, open http://localhost:8080 in a browser.
+Then, open http://localhost:8080 in a browser.
 
 
 ## Local 
@@ -60,7 +70,7 @@ Open http://localhost:8501 in a browser.
  
 # Appendix
 
-## Museums table
+## Museums table with appended cities population
 
 <div>
     <table border="1" class="dataframe">
