@@ -2,11 +2,15 @@
 
 Small demo of [Streamlit](https://www.streamlit.io/). 
 
-Using [wikipedia](https://en.wikipedia.org/wiki/List_of_most-visited_museums) data on museums annual attendance,
+Using data on museums annual attendance,
 it performs a simple linear regression to predict museums annual visitors from the city's population.
 
 
 ## Method
+
+The museum data comes from: https://en.wikipedia.org/wiki/List_of_most-visited_museums
+
+Supplemental data for city populations can be found here: https://worldpopulationreview.com/world-cities
 
 The (naive 😉) model performs a simple linear interpolation to try and predict a museum's annual attendance from
 the city's population. 
